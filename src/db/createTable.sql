@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `UserType` (
 	PRIMARY KEY (`type_id`)
 ) ENGINE MyISAM DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 --------------------------------------------------------------------------------------
--- (Mena) Tables
+-- (Mena) car table
 CREATE TABLE `car` (
   `id` bigint(20) NOT NULL,
   `CarType` varchar(100) DEFAULT NULL,
