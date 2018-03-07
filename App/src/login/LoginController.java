@@ -1,7 +1,14 @@
 package login;
+ 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.text.Text;
 
-/**
- * Created by admin on 3/5/18.
- */
 public class LoginController {
+    @FXML private Text actiontarget;
+    
+    @FXML protected void handleSubmitButtonAction(ActionEvent event) {
+        actiontarget.setText("Sign in button pressed");
+    }
+
 }
