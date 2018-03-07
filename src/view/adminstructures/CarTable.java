@@ -1,4 +1,4 @@
-package adminstructures;
+package view.adminstructures;
 
 public class CarTable {
     long Id;

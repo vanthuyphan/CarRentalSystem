@@ -1,19 +1,19 @@
-package booking;
+package model.car;
 
 /**
  * Created by admin on 3/7/18.
  */
-public class Person {
+public class Car {
 
     private int id;
     private String firstName;
     private String lastName;
 
-    public Person() {
+    public Car() {
 
     }
 
-    public Person(String firstName,String lastName) {
+    public Car(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
     }

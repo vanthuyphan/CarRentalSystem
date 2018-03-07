@@ -1,4 +1,4 @@
-package booking;
+package view.booking;
  
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

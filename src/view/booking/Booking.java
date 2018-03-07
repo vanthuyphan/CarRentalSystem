@@ -1,10 +1,12 @@
-package booking;
+package view.booking;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.car.Car;
+import model.car.CarDaoImpl;
 
 import java.util.List;
 
@@ -24,33 +26,33 @@ public class Booking extends Application {
 
 
         // Test Code:
-        PersonDaoImpl pdi = new PersonDaoImpl();
+        CarDaoImpl pdi = new CarDaoImpl();
 
         /**Create table. Note that you can always run this
          * method. Table will be created only once (if it doesn't exist)**/
         pdi.createPersonTable();
 
-        /**Insert a new record. Create a new Person instance and just
+        /**Insert a new record. Create a new Car instance and just
          * pass it as an argument in "insert" method**/
-        Person person = new Person("John","Johnson");
-        pdi.insert(person);
+        Car car = new Car("John","Johnson");
+        pdi.insert(car);
 
         /**Select by id**/
-        Person personSelect = pdi.selectById(2);
-        System.out.println(personSelect.getId()+", "+personSelect.getFirstName()+", "+personSelect.getLastName());
+        Car carSelect = pdi.selectById(2);
+        System.out.println(carSelect.getId()+", "+ carSelect.getFirstName()+", "+ carSelect.getLastName());
 
-        /**Delete person by id**/
+        /**Delete car by id**/
         pdi.delete(3);
 
-        /**Update person**/
-        Person personUpdate = new Person("Tom","Johnson");
-        pdi.update(personUpdate,1);
+        /**Update car**/
+        Car carUpdate = new Car("Tom","Johnson");
+        pdi.update(carUpdate,1);
 
-        /**Select all persons**/
-        List<Person> persons = pdi.selectAll();
+        /**Select all cars**/
+        List<Car> cars = pdi.selectAll();
         /**To retrieve values, you will have to use "for each" loop
          * to iterate through list**/
-        for(Person p : persons) {
+        for(Car p : cars) {
             System.out.println(p.getId()+", "+p.getFirstName()+", "+p.getLastName());
         }
     }

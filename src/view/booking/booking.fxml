@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Text?>
 <?import java.net.URL?>
-<GridPane fx:controller="booking.BookingController"
+<GridPane fx:controller="view.booking.BookingController"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
           styleClass="root">
   <padding><Insets top="25" right="25" bottom="10" left="25" /></padding>

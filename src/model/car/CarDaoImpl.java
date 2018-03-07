@@ -1,4 +1,4 @@
-package booking;
+package model.car;
 
 import db.ConnectionConfiguration;
 
@@ -9,9 +9,9 @@ import java.util.List;
 /**
  * Created by admin on 3/7/18.
  */
-public class PersonDaoImpl implements PersonDao {
+public class CarDaoImpl implements CarDao {
 
-    /**Creates table named Person with three columns (id, first_name, last_name)**/
+    /**Creates table named Car with three columns (id, first_name, last_name)**/
     @Override
     public void createPersonTable() {
         Connection connection = null;
@@ -44,9 +44,9 @@ public class PersonDaoImpl implements PersonDao {
         }
     }
 
-    /**Inserts new record in Person table as you pass new Person instance**/
+    /**Inserts new record in Car table as you pass new Car instance**/
     @Override
-    public void insert(Person person) {
+    public void insert(Car car) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
@@ -54,10 +54,10 @@ public class PersonDaoImpl implements PersonDao {
             connection = ConnectionConfiguration.getConnection();
             preparedStatement = connection.prepareStatement("INSERT INTO person (first_name,last_name)" +
                     "VALUES (?, ?)");
-            preparedStatement.setString(1, person.getFirstName());
-            preparedStatement.setString(2, person.getLastName());
+            preparedStatement.setString(1, car.getFirstName());
+            preparedStatement.setString(2, car.getLastName());
             preparedStatement.executeUpdate();
-            System.out.println("INSERT INTO person (first_name,last_name)" +
+            System.out.println("INSERT INTO car (first_name,last_name)" +
                     "VALUES (?, ?)");
 
         } catch (Exception e) {
@@ -82,8 +82,8 @@ public class PersonDaoImpl implements PersonDao {
     }
 
     @Override
-    public Person selectById(int id) {
-        Person person = new Person();
+    public Car selectById(int id) {
+        Car car = new Car();
         Connection connection = null;
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -95,9 +95,9 @@ public class PersonDaoImpl implements PersonDao {
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                person.setId(resultSet.getInt("id"));
-                person.setFirstName(resultSet.getString("first_name"));
-                person.setLastName(resultSet.getString("last_name"));
+                car.setId(resultSet.getInt("id"));
+                car.setFirstName(resultSet.getString("first_name"));
+                car.setLastName(resultSet.getString("last_name"));
             }
 
         } catch (Exception e) {
@@ -126,12 +126,12 @@ public class PersonDaoImpl implements PersonDao {
             }
         }
 
-        return person;
+        return car;
     }
 
     @Override
-    public List<Person> selectAll() {
-        List<Person> persons = new ArrayList<Person>();
+    public List<Car> selectAll() {
+        List<Car> cars = new ArrayList<Car>();
         Connection connection = null;
         Statement statement = null;
         ResultSet resultSet = null;
@@ -142,12 +142,12 @@ public class PersonDaoImpl implements PersonDao {
             resultSet = statement.executeQuery("SELECT * FROM person");
 
             while (resultSet.next()) {
-                Person person = new Person();
-                person.setId(resultSet.getInt("id"));
-                person.setFirstName(resultSet.getString("first_name"));
-                person.setLastName(resultSet.getString("last_name"));
+                Car car = new Car();
+                car.setId(resultSet.getInt("id"));
+                car.setFirstName(resultSet.getString("first_name"));
+                car.setLastName(resultSet.getString("last_name"));
 
-                persons.add(person);
+                cars.add(car);
             }
 
         } catch (Exception e) {
@@ -176,7 +176,7 @@ public class PersonDaoImpl implements PersonDao {
             }
         }
 
-        return persons;
+        return cars;
     }
 
     @Override
@@ -213,7 +213,7 @@ public class PersonDaoImpl implements PersonDao {
     }
 
     @Override
-    public void update(Person person, int id) {
+    public void update(Car car, int id) {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
@@ -222,12 +222,12 @@ public class PersonDaoImpl implements PersonDao {
             preparedStatement = connection.prepareStatement("UPDATE person SET " +
                     "first_name = ?, last_name = ? WHERE id = ?");
 
-            preparedStatement.setString(1, person.getFirstName());
-            preparedStatement.setString(2, person.getLastName());
+            preparedStatement.setString(1, car.getFirstName());
+            preparedStatement.setString(2, car.getLastName());
             preparedStatement.setInt(3, id);
             preparedStatement.executeUpdate();
 
-            System.out.println("UPDATE person SET " +
+            System.out.println("UPDATE car SET " +
                     "first_name = ?, last_name = ? WHERE id = ?");
 
         } catch (Exception e) {

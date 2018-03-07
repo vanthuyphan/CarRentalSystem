@@ -1,4 +1,4 @@
-package login;
+package view.login;
  
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

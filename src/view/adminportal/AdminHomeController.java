@@ -1,5 +1,6 @@
-package adminportal;
+package view.adminportal;
 
 public class AdminHomeController {
+
 
 }
