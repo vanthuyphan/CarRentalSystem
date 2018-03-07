@@ -23,22 +23,19 @@ public class DatabaseConnector
 			Class.forName("com.mysql.jdbc.Driver");
 			// Setup the connection with the DB
 			connect = DriverManager
-					.getConnection("jdbc:mysql://localhost/feedback?" + "user=sqluser&password=sqluserpw");
+					.getConnection("jdbc:mysql://localhost:3306/car_rental_system?user=root&password=root&useSSL=true");
 
 			// Statements allow to issue SQL queries to the database
 			statement = connect.createStatement();
 			// Result set get the result of the SQL query
-			resultSet = statement.executeQuery("select * from feedback.comments");
+			resultSet = statement.executeQuery("select * from user");
 			writeResultSet(resultSet);
 
-			
-
-		}
+		} 
 		catch (Exception e)
 		{
 			throw e;
-		} 
-		finally
+		} finally
 		{
 			close();
 		}
@@ -64,8 +61,7 @@ public class DatabaseConnector
 		// ResultSet is initially before the first data set
 		while (resultSet.next())
 		{
-			
-			
+
 			System.out.println("Comment: " + resultSet.getString("email"));
 		}
 	}
@@ -94,8 +90,9 @@ public class DatabaseConnector
 
 		}
 	}
-	
-	public static void main(String[] args) throws Exception {
+
+	public static void main(String[] args) throws Exception
+	{
 		new DatabaseConnector().readDataBase();
 	}
 
