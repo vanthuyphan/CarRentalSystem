@@ -16,7 +16,7 @@ public class Login extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
         
-        stage.setTitle("JavaFX Welcome");
+        stage.setTitle("Car Rental System");
         stage.setScene(new Scene(root, 300, 275));
         stage.show();
     }
