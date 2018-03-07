@@ -1,42 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 <?import java.net.URL?>
-<GridPane fx:controller="view.login.LoginController"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
-          styleClass="root">
-  <padding><Insets top="25" right="25" bottom="10" left="25" /></padding>
-  
-  <Text id="welcome-text" text="Welcome"
-      GridPane.columnIndex="0" GridPane.rowIndex="0" 
-      GridPane.columnSpan="2"/>
-  
-  <Label text="User Name:" 
-      GridPane.columnIndex="0" GridPane.rowIndex="1" />
-  
-  <TextField 
-      GridPane.columnIndex="1" GridPane.rowIndex="1" />
-  
-  <Label text="Password:" 
-      GridPane.columnIndex="0" GridPane.rowIndex="2" />
-  
-  <PasswordField fx:id="passwordField" 
-      GridPane.columnIndex="1" GridPane.rowIndex="2" />
-  
-  <HBox spacing="10" alignment="bottom_right" 
-      GridPane.columnIndex="1" GridPane.rowIndex="4">
-      <Button text="Sign In" 
-       onAction="#handleSubmitButtonAction" />
-  </HBox>
-  
-  <Text fx:id="actiontarget" 
-      GridPane.columnIndex="1" GridPane.rowIndex="6" />
-  
-  <stylesheets>
-    <URL value="@Login.css" />
-  </stylesheets>
-  
+<GridPane fx:controller="view.login.LoginController" xmlns:fx="http://javafx.com/fxml"
+	alignment="center" hgap="10" vgap="10" styleClass="root">
+	<padding>
+		<Insets top="25" right="25" bottom="10" left="25" />
+	</padding>
+
+	<Text id="welcome-text" text="Fairfield Car rental" textAlignment="CENTER"
+		wrappingWidth="279.03125" GridPane.columnSpan="2" GridPane.rowIndex="0" />
+
+	<Label text="Email:" GridPane.rowIndex="1" />
+
+	<TextField id="emailField" fx:id="emailField"
+		GridPane.columnIndex="1" GridPane.rowIndex="1" onAction="#handleSignInAction" />
+
+	<Label text="Password:" GridPane.rowIndex="2" />
+
+	<PasswordField id="passwordField" fx:id="passwordField"
+		GridPane.columnIndex="1" GridPane.rowIndex="2" onAction="#handleSignInAction" />
+
+	<HBox alignment="BOTTOM_RIGHT" prefHeight="23.0" prefWidth="74.0"
+		spacing="10" GridPane.columnIndex="1" GridPane.rowIndex="4">
+		<Button onAction="#handleSignInAction" text="Sign In" />
+	</HBox>
+
+	<Text fx:id="actiontarget" GridPane.columnIndex="1"
+		GridPane.rowIndex="6" />
+	<Button onAction="#handleSignUpAction" text="Sign Up"
+		GridPane.rowIndex="4" />
+
+	<stylesheets>
+		<URL value="@Login.css" />
+	</stylesheets>
+	<columnConstraints>
+		<ColumnConstraints />
+		<ColumnConstraints />
+	</columnConstraints>
+	<rowConstraints>
+		<RowConstraints />
+		<RowConstraints />
+		<RowConstraints />
+		<RowConstraints />
+		<RowConstraints />
+		<RowConstraints />
+		<RowConstraints />
+	</rowConstraints>
+
 </GridPane>
