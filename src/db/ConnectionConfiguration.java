@@ -16,7 +16,7 @@ public class ConnectionConfiguration {
 	/**
 	 * In my case password is "1234" *
 	 */
-	public static final String PASSWORD = "123456";
+	public static final String PASSWORD = "root";
 
 	public static Connection getConnection() {
 		Connection connection = null;

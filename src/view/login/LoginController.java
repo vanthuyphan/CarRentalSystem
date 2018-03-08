@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import model.user.UserManImpl;
 
 public class LoginController {
 	@FXML
@@ -27,9 +28,12 @@ public class LoginController {
 			return;
 		}
 		if (Login(emailField.getText(), passwordField.getText())) {
+			actiontarget.setText("Login ok");
 			// Call Main Screen
-		} else
+		} else {
 			actiontarget.setText("You may have entered an unknown email address or an incorrect password");
+			passwordField.setText("");
+		}
 	}
 
 	@FXML
@@ -43,8 +47,9 @@ public class LoginController {
 
 	}
 
-	private boolean Login(String email, String pass) {
-		return true;
+	private boolean Login(String email, String password) {
+		UserManImpl userMan = new UserManImpl();
+		return userMan.login(email, password);
 	}
 
 }

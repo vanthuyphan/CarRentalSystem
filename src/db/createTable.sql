@@ -1,5 +1,15 @@
 create database car_rental_system;
 use car_rental_system;
+
+CREATE TABLE IF NOT EXISTS `UserType` (
+	`type_id` BIGINT NOT NULL AUTO_INCREMENT,
+	`type` VARCHAR(100),
+	PRIMARY KEY (`type_id`)
+) ENGINE MyISAM DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+Insert into UserType (type) values('Customer');
+Insert into UserType (type) values('Admin');
+
 CREATE TABLE IF NOT EXISTS `User` (
 	`user_id` BIGINT NOT NULL AUTO_INCREMENT,
 	`name` VARCHAR(100),
@@ -12,14 +22,15 @@ CREATE TABLE IF NOT EXISTS `User` (
     `created` DATETIME,
     `last_login` DATETIME,
     `insurance_company` VARCHAR(100),
-	PRIMARY KEY (`user_id`)
+	PRIMARY KEY (`user_id`),
+    FOREIGN KEY (type) REFERENCES UserType(type_id)
 ) ENGINE MyISAM DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
-CREATE TABLE IF NOT EXISTS `UserType` (
-	`type_id` BIGINT NOT NULL AUTO_INCREMENT,
-	`type` VARCHAR(100),
-	PRIMARY KEY (`type_id`)
-) ENGINE MyISAM DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+insert into User (name, email, password, type, status, created) values ('Enkhee', 'test1@test.com', '123', 1, 0, sysdate());
+insert into User (name, email, password, type, status, created) values ('Van', 'test2@test.com', '123', 1, 0, sysdate());
+insert into User (name, email, password, type, status, created) values ('Mena', 'test3@test.com', '123', 2, 0, sysdate());
+insert into User (name, email, password, type, status, created) values ('Hazem', 'test4@test.com', '123', 1, 0, sysdate());s
+
 --------------------------------------------------------------------------------------
 -- (Mena) car table
 CREATE TABLE `car` (
@@ -35,5 +46,4 @@ CREATE TABLE `car` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --------------------------------------------------------------------------------------
-
 
