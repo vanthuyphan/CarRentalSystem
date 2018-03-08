@@ -56,3 +56,17 @@ INSERT INTO `car_rental_system`.`car`
 `Status`) VALUES ('adf','sddf','sdf','sdf','sdf','sdf','s');
 --------------------------------------------------------------------------------------
 
+
+CREATE TABLE IF NOT EXISTS `Order` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `car` BIGINT ,
+  `user` BIGINT,
+  `status` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`car`) REFERENCES car(id),
+  FOREIGN KEY (`user`) REFERENCES User(user_id)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+
+
+
