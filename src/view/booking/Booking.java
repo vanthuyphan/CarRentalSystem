@@ -19,7 +19,6 @@ public class Booking extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("booking.fxml"));
-        
         stage.setTitle("Car Searching");
         stage.setScene(new Scene(root, 800, 700));
         stage.show();
