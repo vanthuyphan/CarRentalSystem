@@ -33,7 +33,7 @@ insert into User (name, email, password, type, status, created) values ('Hazem',
 
 --------------------------------------------------------------------------------------
 -- (Mena) car table
-CREATE TABLE `car` (
+CREATE TABLE `Car` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `CarType` varchar(100) DEFAULT NULL,
   `ProviderComp` varchar(100) DEFAULT NULL,
@@ -66,6 +66,7 @@ CREATE TABLE IF NOT EXISTS `Order` (
   FOREIGN KEY (`car`) REFERENCES car(id),
   FOREIGN KEY (`user`) REFERENCES User(user_id)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
 
 
 

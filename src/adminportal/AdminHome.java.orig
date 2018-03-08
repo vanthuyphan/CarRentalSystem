@@ -76,17 +76,17 @@ public class AdminHome extends Application
 			table.setPrefSize(480, 400);
 
 			TableColumn carType = new TableColumn("Car Type");
-			TableColumn providerComp = new TableColumn("Provider Comp.");
+			TableColumn provider = new TableColumn("Provider Comp.");
 			TableColumn passenger = new TableColumn("Passengers");
 			TableColumn price = new TableColumn("Price");
 			TableColumn color = new TableColumn("Color");
 			TableColumn isAvailable = new TableColumn("Is Available");
 			TableColumn status = new TableColumn("Status");
 
-			table.getColumns().addAll(carType, providerComp, passenger, price, color, isAvailable, status);
+			table.getColumns().addAll(carType, provider, passenger, price, color, isAvailable, status);
 
 			carType.setCellValueFactory(new PropertyValueFactory<CarTable, String>("CarType"));
-			providerComp.setCellValueFactory(new PropertyValueFactory<CarTable, String>("ProviderComp"));
+			provider.setCellValueFactory(new PropertyValueFactory<CarTable, String>("ProviderComp"));
 			passenger.setCellValueFactory(new PropertyValueFactory<CarTable, String>("Passenger"));
 			price.setCellValueFactory(new PropertyValueFactory<CarTable, String>("Price"));
 			color.setCellValueFactory(new PropertyValueFactory<CarTable, String>("Color"));
@@ -140,7 +140,7 @@ public class AdminHome extends Application
 				errorText.setText("");
 				
 				String carType = carTypeTextf.getText();
-				String providerComp = providerCompTextf.getText();
+				String provider = providerCompTextf.getText();
 				String passenger = passengerTextf.getText();
 				String price = priceTextf.getText();
 				String color = colorTextf.getText();
@@ -149,7 +149,7 @@ public class AdminHome extends Application
 
 				//
 				// validation
-				if (carType.equals("") || providerComp.equals("") || passenger.equals("") || price.equals("")
+				if (carType.equals("") || provider.equals("") || passenger.equals("") || price.equals("")
 						|| color.equals("") || isAvailable.equals("") || status.equals(""))
 				{
 					System.out.println("asd" + carType + "asd");
@@ -162,7 +162,7 @@ public class AdminHome extends Application
 					// carList.add();
 
 					carList = table.getItems();
-					carList.add(new CarTable(carType, providerComp, passenger, price, color, isAvailable, status));
+					carList.add(new CarTable(carType, provider, passenger, price, color, isAvailable, status));
 					table.setItems(carList);
 
 					emptyTextFields();

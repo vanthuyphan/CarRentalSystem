@@ -1,4 +1,4 @@
-package model.car;
+package model.order;
 
 /**
  * Created by VanPhan on 3/7/18.

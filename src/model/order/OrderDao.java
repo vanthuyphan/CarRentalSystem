@@ -1,4 +1,6 @@
-package model.car;
+package model.order;
+
+import model.car.Car;
 
 import java.util.List;
 

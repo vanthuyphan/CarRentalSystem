@@ -5,10 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.car.Car;
-import model.car.CarDaoImpl;
-
-import java.util.List;
 
 public class Booking extends Application {
     

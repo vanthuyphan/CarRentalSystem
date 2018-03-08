@@ -1,13 +1,12 @@
 package adminportal;
 
-import java.awt.Insets;
 import java.util.ArrayList;
 import java.util.List;
 
-import adminstructures.CarTable;
-import adminstructures.CarTableDaoImplimentation;
+import model.car.Car;
+import model.car.CarDaoImpl;
 //import model.adminstructures;
-//import model.adminstructures.CarTable;
+//import model.model.car.Car;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,7 +22,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Button;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -86,20 +84,20 @@ public class AdminHome extends Application
 
 			table.getColumns().addAll(carType, providerComp, passenger, price, color, isAvailable, status);
 
-			carType.setCellValueFactory(new PropertyValueFactory<CarTable, String>("CarType"));
-			providerComp.setCellValueFactory(new PropertyValueFactory<CarTable, String>("ProviderComp"));
-			passenger.setCellValueFactory(new PropertyValueFactory<CarTable, String>("Passenger"));
-			price.setCellValueFactory(new PropertyValueFactory<CarTable, String>("Price"));
-			color.setCellValueFactory(new PropertyValueFactory<CarTable, String>("Color"));
-			isAvailable.setCellValueFactory(new PropertyValueFactory<CarTable, String>("IsAvailable"));
-			status.setCellValueFactory(new PropertyValueFactory<CarTable, String>("Status"));
+			carType.setCellValueFactory(new PropertyValueFactory<Car, String>("CarType"));
+			providerComp.setCellValueFactory(new PropertyValueFactory<Car, String>("ProviderComp"));
+			passenger.setCellValueFactory(new PropertyValueFactory<Car, String>("Passenger"));
+			price.setCellValueFactory(new PropertyValueFactory<Car, String>("Price"));
+			color.setCellValueFactory(new PropertyValueFactory<Car, String>("Color"));
+			isAvailable.setCellValueFactory(new PropertyValueFactory<Car, String>("IsAvailable"));
+			status.setCellValueFactory(new PropertyValueFactory<Car, String>("Status"));
 
 			// Generating test data
-			ObservableList<CarTable> carList = FXCollections.observableArrayList();
-			CarTableDaoImplimentation databaseQuery = new CarTableDaoImplimentation();
+			ObservableList<Car> carList = FXCollections.observableArrayList();
+			CarDaoImpl databaseQuery = new CarDaoImpl();
 
-			List<CarTable> carlist2 = new ArrayList<CarTable>();
-			ObservableList<CarTable> oListStavaka = FXCollections.observableArrayList(databaseQuery.getAllCars());
+			List<Car> carlist2 = new ArrayList<Car>();
+			ObservableList<Car> oListStavaka = FXCollections.observableArrayList(databaseQuery.getAllCars());
 
 			table.setItems(oListStavaka);
 
@@ -197,16 +195,16 @@ public class AdminHome extends Application
 			return false;
 		} else
 		{
-			CarTableDaoImplimentation databaseQuery = new CarTableDaoImplimentation();
-			CarTable car = new CarTable(0, carType, providerComp, passenger, price, color, isAvailable, status);
+			CarDaoImpl databaseQuery = new CarDaoImpl();
+			Car car = new Car(0, carType, providerComp, passenger, price, color, isAvailable, status);
 			boolean result = databaseQuery.insertCar(car);
 			System.out.println(result);
 			
 			if (result)
 			{
-				ObservableList<CarTable> carList = FXCollections.observableArrayList();
+				ObservableList<Car> carList = FXCollections.observableArrayList();
 				carList = table.getItems();
-				carList.add(new CarTable(0, carType, providerComp, passenger, price, color, isAvailable, status));
+				carList.add(new Car(0, carType, providerComp, passenger, price, color, isAvailable, status));
 				table.setItems(carList);
 
 				emptyTextFields();
