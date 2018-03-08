@@ -2,41 +2,106 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.Text?>
-<?import java.net.URL?>
-<GridPane fx:controller="view.booking.BookingController"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10"
-          styleClass="root">
-  <padding><Insets top="25" right="25" bottom="10" left="25" /></padding>
-  
-  <Text id="welcome-text" text="Welcome"
-      GridPane.columnIndex="0" GridPane.rowIndex="0" 
-      GridPane.columnSpan="2"/>
-  
-  <Label text="User Name:" 
-      GridPane.columnIndex="0" GridPane.rowIndex="1" />
-  
-  <TextField 
-      GridPane.columnIndex="1" GridPane.rowIndex="1" />
-  
-  <Label text="Password:" 
-      GridPane.columnIndex="0" GridPane.rowIndex="2" />
-  
-  <PasswordField fx:id="passwordField" 
-      GridPane.columnIndex="1" GridPane.rowIndex="2" />
-  
-  <HBox spacing="10" alignment="bottom_right" 
-      GridPane.columnIndex="1" GridPane.rowIndex="4">
-      <Button text="Sign In" 
-       onAction="#handleSubmitButtonAction" />
-  </HBox>
-  
-  <Text fx:id="actiontarget" 
-      GridPane.columnIndex="1" GridPane.rowIndex="6" />
-  
-  <stylesheets>
-    <URL value="@Booking.css" />
-  </stylesheets>
-  
-</GridPane>
+<StackPane id="StackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <SplitPane dividerPositions="0.39195979899497485" focusTraversable="true" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
+      <items>
+        <GridPane fx:id="grid" prefHeight="268.0" prefWidth="598.0" vgap="20.0">
+          <children>
+            <GridPane prefHeight="47.0" prefWidth="486.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+              <children>
+                <Button fx:id="clear" cancelButton="true" mnemonicParsing="false" text="Clear" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Button fx:id="search" defaultButton="true" mnemonicParsing="false" text="Search" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+              </children>
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="338.0" minWidth="10.0" prefWidth="338.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="0.0" prefWidth="67.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="175.0" minWidth="10.0" prefWidth="81.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints maxHeight="110.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="72.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+            </GridPane>
+            <Label alignment="CENTER_RIGHT" prefHeight="21.0" prefWidth="101.0" text="Pickup Date" GridPane.rowIndex="1" />
+            <TextField fx:id="pickupDate" prefHeight="27.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+            <Label alignment="CENTER_RIGHT" prefWidth="101.0" text="Drop-Off Date" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <TextField fx:id="dropOffDate" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+            <Label alignment="CENTER_RIGHT" prefWidth="101.0" text="Car Type" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            <TextField fx:id="carType" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+            <Label alignment="CENTER_RIGHT" prefHeight="34.0" prefWidth="101.0" text="Provider" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+            <TextField fx:id="provider" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+            <Label alignment="CENTER_RIGHT" prefWidth="101.0" text="Passengers" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+            <TextField fx:id="passengers" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+
+          </children>
+          <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="246.0" minWidth="10.0" prefWidth="140.0" />
+            <ColumnConstraints fillWidth="false" hgrow="SOMETIMES" maxWidth="679.0" minWidth="10.0" prefWidth="658.0" />
+          </columnConstraints>
+          <rowConstraints>
+            <RowConstraints maxHeight="64.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="68.0" minHeight="0.0" prefHeight="22.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="68.0" minHeight="10.0" prefHeight="22.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="167.0" minHeight="20.0" prefHeight="20.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="167.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
+          </rowConstraints>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+        </GridPane>
+        <StackPane prefHeight="383.0" prefWidth="798.0">
+          <children>
+            <TableView fx:id="table" prefHeight="180.0" prefWidth="507.0">
+              <columns>
+                <TableColumn prefWidth="120.0" resizable="true" text="Car Type">
+                  <cellValueFactory>
+                    <PropertyValueFactory property="orderId" />
+                  </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="120.0" text="Provider">
+                  <cellValueFactory>
+                    <PropertyValueFactory property="customerId" />
+                  </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="120.0" text="Passengers">
+                  <cellValueFactory>
+                    <PropertyValueFactory property="productsCount" />
+                  </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="120.0" text="Color">
+                  <cellValueFactory>
+                    <PropertyValueFactory property="delivered" />
+                  </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="120.0" text="Price">
+                  <cellValueFactory>
+                    <PropertyValueFactory property="deliveryDays" />
+                  </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="150.0" text="Total order price">
+                  <cellValueFactory>
+                    <PropertyValueFactory property="totalOrderPrice" />
+                  </cellValueFactory>
+                </TableColumn>
+              </columns>
+                     <StackPane.margin>
+                        <Insets bottom="40.0" />
+                     </StackPane.margin>
+            </TableView>
+          </children>
+               <padding>
+                  <Insets top="20.0" />
+               </padding>
+        </StackPane>
+      </items>
+    </SplitPane>
+  </children>
+</StackPane>
