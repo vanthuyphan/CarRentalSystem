@@ -25,7 +25,7 @@ public class RegisterController {
 	@FXML
 	private TextField conPasswordField;
 
-	Stage primaryStage;
+	Stage stage;
 
 	@FXML
 	protected void handleRegisterAction(ActionEvent event) throws IOException {
@@ -56,17 +56,20 @@ public class RegisterController {
 		}
 
 		Register(nameField.getText(), emailField.getText(), passwordField.getText());
-		actiontarget.setText("reg ok");
-		// Call Main Screen
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
+		Parent root = (Parent) fxmlLoader.load();
+		LoginController cont = (LoginController) fxmlLoader.getController();
+		cont.setEmail(emailField.getText());
+		stage.setTitle("Car Rental System");
+		stage.setScene(new Scene(root, 400, 275));
+		stage.show();
 
 	}
 
 	@FXML
 	protected void handleBackAction(ActionEvent event) throws IOException {
-		// actiontarget.setText("back ok");
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("login.fxml"));
 		Parent root = (Parent) fxmlLoader.load();
-		Stage stage = new Stage();
 		stage.setTitle("Car Rental System");
 		stage.setScene(new Scene(root, 400, 275));
 		stage.show();
@@ -79,21 +82,10 @@ public class RegisterController {
 		user.setPassword(password);
 		user.setType(1);
 		UserManImpl userMan = new UserManImpl();
-		userMan.insert(user);
+		userMan.insert(user);	
 	}
 
-	public void start(Stage pStage) throws Exception {
-
-		primaryStage = pStage;
-
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("register.fxml"));
-		Parent root = (Parent) fxmlLoader.load();
-		Stage stage = new Stage();
-		stage.setTitle("Car Rental System");
-		stage.setScene(new Scene(root, 400, 275));
-		stage.show();
-
-		primaryStage.hide();
+	public void setStage(Stage stage) {
+		this.stage = stage;
 	}
-
 }

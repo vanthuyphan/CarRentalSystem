@@ -22,6 +22,8 @@ public class LoginController {
 	@FXML
 	private TextField passwordField;
 
+	Stage stage;
+
 	@FXML
 	protected void handleSignInAction(ActionEvent event) throws IOException {
 
@@ -42,7 +44,8 @@ public class LoginController {
 	protected void handleSignUpAction(ActionEvent event) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("register.fxml"));
 		Parent root = (Parent) fxmlLoader.load();
-		Stage stage = new Stage();
+		RegisterController cont = (RegisterController) fxmlLoader.getController();
+		cont.setStage(stage);
 		stage.setTitle("Car Rental System");
 		stage.setScene(new Scene(root, 400, 275));
 		stage.show();
@@ -51,6 +54,14 @@ public class LoginController {
 	private boolean Login(String email, String password) {
 		UserManImpl userMan = new UserManImpl();
 		return userMan.login(email, password);
+	}
+
+	public void setStage(Stage stage) {
+		this.stage = stage;
+	}
+
+	public void setEmail(String text) {
+		emailField.setText(text);		
 	}
 
 }
