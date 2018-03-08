@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `User` (
 insert into User (name, email, password, type, status, created) values ('Enkhee', 'test1@test.com', '123', 1, 0, sysdate());
 insert into User (name, email, password, type, status, created) values ('Van', 'test2@test.com', '123', 1, 0, sysdate());
 insert into User (name, email, password, type, status, created) values ('Mena', 'test3@test.com', '123', 2, 0, sysdate());
-insert into User (name, email, password, type, status, created) values ('Hazem', 'test4@test.com', '123', 1, 0, sysdate());s
+insert into User (name, email, password, type, status, created) values ('Hazem', 'test4@test.com', '123', 1, 0, sysdate());
 
 --------------------------------------------------------------------------------------
 -- (Mena) car table
@@ -44,6 +44,15 @@ CREATE TABLE `car` (
   `Status` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
-
+-- car table temp data for testing
+INSERT INTO `car_rental_system`.`car`
+(
+`CarType`,
+`ProviderComp`,
+`Passenger`,
+`Price`,
+`Color`,
+`IsAvailable`,
+`Status`) VALUES ('adf','sddf','sdf','sdf','sdf','sdf','s');
 --------------------------------------------------------------------------------------
 
