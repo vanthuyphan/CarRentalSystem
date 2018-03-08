@@ -45,9 +45,10 @@ CREATE TABLE IF NOT EXISTS `Car` (
 ) ENGINE MyISAM DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 
-INSERT INTO `car_rental_system`.`Car`(`carType`,`provider`,`passengers`, `price`,`color`,`available`,`status`)
-VALUES ('Van','BWM', 4, 100, 'black', 1, 'waiting');
---------------------------------------------------------------------------------------
+INSERT INTO Car(carType,provider , passengers ,  price ,color , available , status ) VALUES ('Van','BWM', 4, 100, 'black', 1, 'waiting');
+INSERT INTO Car(carType,provider , passengers ,  price ,color , available , status ) VALUES ('Van2','BWM', 4, 100, 'black', 1, 'waiting');
+INSERT INTO Car(carType,provider , passengers ,  price ,color , available , status ) VALUES ('Van2','BWM', 4, 100, 'black', 1, 'waiting');
+INSERT INTO Car(carType,provider , passengers ,  price ,color , available , status ) VALUES ('Van2','BWM', 4, 100, 'black', 1, 'waiting');
 
 
 CREATE TABLE IF NOT EXISTS `Order` (
