@@ -1,9 +1,6 @@
 package model.car;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +16,12 @@ public class CarDaoImpl implements CarDao {
         try {
             connection = ConnectionConfiguration.getConnection();
             statement = connection.createStatement();
-            statement.execute(
-                    "INSERT INTO `car_rental_system`.`car`(`CarType`,`ProviderComp`,`Passenger`,`Price`,`Color`,`IsAvailable`,`Status`) VALUES ('"
-                            + car.getCarType() + "','" + car.getProvider() + "','" + car.getPassenger() + "','" + car.getPrice() + "','"
-                            + car.getColor() + "','" + car.getIsAvailable() + "','" + car.getStatus() + "');");
+
+            String sql = "INSERT INTO Car(carType,provider , passengers ,  price ,color , available , status )" +
+                    "VALUES ('%s','%s', %d, %d, %s, %d, %s);";
+            statement.execute(String.format(sql, car.getCarType(), car.getProvider(), car.getPassenger(), car.getPrice(), car.getColor(),
+                    car.getIsAvailable(), car.getStatus())
+            );
             return true;
         } catch (Exception e) {
             e.printStackTrace();
@@ -45,12 +44,6 @@ public class CarDaoImpl implements CarDao {
             }
         }
 
-    }
-
-    @Override
-    public boolean deleteCar(long carID) {
-        // TODO Auto-generated method stub
-        return false;
     }
 
     @Override
@@ -106,6 +99,40 @@ public class CarDaoImpl implements CarDao {
             }
         }
         return carlist;
+    }
+
+    @Override
+    public boolean deleteCar(long id) {
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+
+        try {
+            connection = ConnectionConfiguration.getConnection();
+            preparedStatement = connection.prepareStatement("DELETE FROM person WHERE id = ?");
+            preparedStatement.setLong(1, id);
+            preparedStatement.executeUpdate();
+
+            System.out.println("DELETE FROM person WHERE id = ?");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (preparedStatement != null) {
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return true;
     }
 
 }

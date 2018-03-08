@@ -3,6 +3,8 @@ package view.booking;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import model.car.Car;
+import model.car.CarDaoImpl;
 
 import java.util.List;
 
@@ -20,7 +22,7 @@ public class BookingController {
         System.out.println(dropOffDate.getText());
         System.out.println(provider.getText());
         System.out.println(passengers.getText());
-        List<Car> results = new CarDaoImpl().search(carType.getText(), pickupDate.getText(), dropOffDate.getText(), provider.getText(), passengers.getText());
+        //List<Car> results = new CarDaoImpl().search(carType.getText(), pickupDate.getText(), dropOffDate.getText(), provider.getText(), passengers.getText());
     }
 
     @FXML protected void handleResetButtonAction(ActionEvent event) {

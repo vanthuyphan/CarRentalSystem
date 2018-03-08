@@ -31,29 +31,22 @@ insert into User (name, email, password, type, status, created) values ('Van', '
 insert into User (name, email, password, type, status, created) values ('Mena', 'test3@test.com', '123', 2, 0, sysdate());
 insert into User (name, email, password, type, status, created) values ('Hazem', 'test4@test.com', '123', 1, 0, sysdate());
 
---------------------------------------------------------------------------------------
--- (Mena) car table
-CREATE TABLE `Car` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `CarType` varchar(100) DEFAULT NULL,
-  `ProviderComp` varchar(100) DEFAULT NULL,
-  `Passenger` varchar(100) DEFAULT NULL,
-  `Price` varchar(100) DEFAULT NULL,
-  `Color` varchar(100) DEFAULT NULL,
-  `IsAvailable` varchar(100) DEFAULT NULL,
-  `Status` varchar(100) DEFAULT NULL,
+DROP TABLE Car;
+CREATE TABLE IF NOT EXISTS `Car` (
+	 `id` BIGINT NOT NULL AUTO_INCREMENT,
+  `carType` varchar(100) DEFAULT NULL,
+  `provider` varchar(100) DEFAULT NULL,
+  `passengers` INTEGER DEFAULT NULL,
+  `price` DOUBLE DEFAULT NULL,
+  `color` varchar(100) DEFAULT NULL,
+  `available` TINYINT DEFAULT NULL,
+  `status` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
--- car table temp data for testing
-INSERT INTO `car_rental_system`.`car`
-(
-`CarType`,
-`ProviderComp`,
-`Passenger`,
-`Price`,
-`Color`,
-`IsAvailable`,
-`Status`) VALUES ('adf','sddf','sdf','sdf','sdf','sdf','s');
+) ENGINE MyISAM DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+
+INSERT INTO `car_rental_system`.`Car`(`carType`,`provider`,`passengers`, `price`,`color`,`available`,`status`)
+VALUES ('Van','BWM', 4, 100, 'black', 1, 'waiting');
 --------------------------------------------------------------------------------------
 
 
