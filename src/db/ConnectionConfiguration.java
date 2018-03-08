@@ -7,8 +7,9 @@ import javax.sql.DataSource;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
-public class ConnectionConfiguration {
-	public static final String URL = "jdbc:mysql://localhost:3306/car_rental_system";
+public class ConnectionConfiguration
+{
+	public static final String URL = "jdbc:mysql://localhost:3306/car_rental_system?user=root&password=root&useSSL=true";
 	/**
 	 * In my case username is "root" *
 	 */
@@ -18,13 +19,16 @@ public class ConnectionConfiguration {
 	 */
 	public static final String PASSWORD = "root";
 
-	public static Connection getConnection() {
+	public static Connection getConnection()
+	{
 		Connection connection = null;
 
-		try {
+		try
+		{
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-		} catch (Exception e) {
+			connection = DriverManager.getConnection(URL);
+		} catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 
