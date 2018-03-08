@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `UserType` (
 --------------------------------------------------------------------------------------
 -- (Mena) car table
 CREATE TABLE `car` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `CarType` varchar(100) DEFAULT NULL,
   `ProviderComp` varchar(100) DEFAULT NULL,
   `Passenger` varchar(100) DEFAULT NULL,
@@ -32,7 +32,8 @@ CREATE TABLE `car` (
   `IsAvailable` varchar(100) DEFAULT NULL,
   `Status` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
 --------------------------------------------------------------------------------------
 
 
