@@ -8,7 +8,4 @@ import java.util.List;
 public interface iRequests {
     List<Order> selectAllApproved();
     List<Order> selectAllOrders();
-
-
-
 }

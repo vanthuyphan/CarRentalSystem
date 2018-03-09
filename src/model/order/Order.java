@@ -1,13 +1,16 @@
 package model.order;
 
+import model.car.Car;
+import model.user.User;
+
 /**
  * Created by VanPhan on 3/7/18.
  */
 public class Order {
 
     private int id;
-    private String firstName;
-    private String lastName;
+    private Car car;
+    private User user;
 
 
     // 2nd constructor by Hazem
@@ -22,33 +25,32 @@ public class Order {
     this.car_type = car_type ;
     }
 
-    public Order(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Order(Car car, User user) {
+        this.car = car;
+        this.user = user;
     }
 
-
-    public int getId() {
-        return id;
+    public Car getCar() {
+        return car;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCar(Car car) {
+        this.car = car;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public User getUser() {
+        return user;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getStatus() {
+        return status;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

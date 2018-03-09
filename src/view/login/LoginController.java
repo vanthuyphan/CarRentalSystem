@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.user.UserManImpl;
+import view.booking.BookingController;
 
 public class LoginController {
 	@FXML
@@ -23,6 +24,7 @@ public class LoginController {
 	private TextField passwordField;
 
 	Stage stage;
+	UserManImpl userMan = new UserManImpl();
 
 	@FXML
 	protected void handleSignInAction(ActionEvent event) throws IOException {
@@ -31,14 +33,26 @@ public class LoginController {
 			actiontarget.setText("Please enter email and password");
 			return;
 		}
-		if (Login(emailField.getText(), passwordField.getText())) {
-			actiontarget.setText("Login ok");
-			// Call Main Screen
+		if (login(emailField.getText(), passwordField.getText())) {
+			actiontarget.setText("login ok");
+			changeToSearchingScreen();
 		} else {
 			actiontarget.setText("Email or password incorrect");
 			passwordField.setText("");
 		}
 	}
+
+	protected void changeToSearchingScreen() throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../booking/booking.fxml"));
+		Parent root = (Parent) fxmlLoader.load();
+		BookingController controller = (BookingController) fxmlLoader.getController();
+		controller.initTable();
+		stage.setTitle("Car Rental System -- Searching");
+		controller.setUser(userMan.getCurrentUser());
+		stage.setScene(new Scene(root, 800, 600));
+		stage.show();
+	}
+
 
 	@FXML
 	protected void handleSignUpAction(ActionEvent event) throws IOException {
@@ -51,8 +65,7 @@ public class LoginController {
 		stage.show();
 	}
 
-	private boolean Login(String email, String password) {
-		UserManImpl userMan = new UserManImpl();
+	private boolean login(String email, String password) {
 		return userMan.login(email, password);
 	}
 

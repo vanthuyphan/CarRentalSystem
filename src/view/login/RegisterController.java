@@ -26,6 +26,7 @@ public class RegisterController {
 	private TextField conPasswordField;
 
 	Stage stage;
+	private User user;
 
 	@FXML
 	protected void handleRegisterAction(ActionEvent event) throws IOException {
@@ -87,5 +88,9 @@ public class RegisterController {
 
 	public void setStage(Stage stage) {
 		this.stage = stage;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

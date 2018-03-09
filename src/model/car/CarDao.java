@@ -11,4 +11,6 @@ public interface CarDao
 	boolean editCar(Car car);
 	
 	List<Car> getAllCars();
+
+	List<Car> search();
 }

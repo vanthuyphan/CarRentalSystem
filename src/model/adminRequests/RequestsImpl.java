@@ -16,7 +16,6 @@ public class RequestsImpl implements iRequests {
         Connection connection = null;
         Statement preparedStatement = null;
         List<Order> ordersList = new ArrayList<Order>();
-
         try {
             connection = ConnectionConfiguration.getConnection();
             ResultSet result = preparedStatement.executeQuery("SELECT Orders.id,car.CarType,orders.status,User.email FROM Orders Join car on car.id=orders.id"
@@ -96,7 +95,6 @@ public class RequestsImpl implements iRequests {
                 }
             }
         }
-
         return ordersList;
     }
 }

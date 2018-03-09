@@ -1,22 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import java.lang.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.control.cell.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.cell.PropertyValueFactory?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
-
 <StackPane id="StackPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.booking.BookingController">
   <children>
     <SplitPane dividerPositions="0.39195979899497485" focusTraversable="true" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0">
@@ -72,39 +59,7 @@
         </GridPane>
         <StackPane prefHeight="383.0" prefWidth="798.0">
           <children>
-            <TableView fx:id="table" prefHeight="180.0" prefWidth="507.0">
-              <columns>
-                <TableColumn prefWidth="120.0" resizable="true" text="Car Type">
-                  <cellValueFactory>
-                    <PropertyValueFactory property="orderId" />
-                  </cellValueFactory>
-                </TableColumn>
-                <TableColumn prefWidth="120.0" text="Provider">
-                  <cellValueFactory>
-                    <PropertyValueFactory property="customerId" />
-                  </cellValueFactory>
-                </TableColumn>
-                <TableColumn prefWidth="120.0" text="Passengers">
-                  <cellValueFactory>
-                    <PropertyValueFactory property="productsCount" />
-                  </cellValueFactory>
-                </TableColumn>
-                <TableColumn prefWidth="120.0" text="Color">
-                  <cellValueFactory>
-                    <PropertyValueFactory property="delivered" />
-                  </cellValueFactory>
-                </TableColumn>
-                <TableColumn prefWidth="120.0" text="Price">
-                  <cellValueFactory>
-                    <PropertyValueFactory property="deliveryDays" />
-                  </cellValueFactory>
-                </TableColumn>
-                <TableColumn prefWidth="150.0" text="Total order price">
-                  <cellValueFactory>
-                    <PropertyValueFactory property="totalOrderPrice" />
-                  </cellValueFactory>
-                </TableColumn>
-              </columns>
+            <TableView prefHeight="180.0" prefWidth="507.0" fx:id="carTable" >
                      <StackPane.margin>
                         <Insets bottom="40.0" />
                      </StackPane.margin>

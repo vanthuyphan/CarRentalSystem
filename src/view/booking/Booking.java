@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import view.login.RegisterController;
 
 public class Booking extends Application {
     
@@ -14,9 +15,12 @@ public class Booking extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("booking.fxml"));
-        stage.setTitle("Car Searching");
-        stage.setScene(new Scene(root, 800, 700));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("booking.fxml"));
+        Parent root = (Parent) fxmlLoader.load();
+        BookingController controller = (BookingController) fxmlLoader.getController();
+        controller.initTable();
+        stage.setTitle("Car Rental System -- Searching");
+        stage.setScene(new Scene(root, 800, 600));
         stage.show();
     }
 }

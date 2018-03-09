@@ -8,6 +8,8 @@ import java.util.List;
 
 public class UserManImpl implements UserMan {
 
+	private User currentUser;
+
 	@Override
 	public void insert(User user) {
 		Connection connection = null;
@@ -253,6 +255,7 @@ public class UserManImpl implements UserMan {
 			if (user.getUserId() != -1) {
 				if (user.getStatus() == 0 && user.getPassword().equals(password)) {
 					ret = true;
+					this.currentUser = user;
 					update(user, user.getUserId());
 				}
 			}
@@ -276,5 +279,9 @@ public class UserManImpl implements UserMan {
 			}
 		}
 		return ret;
+	}
+
+	public User getCurrentUser() {
+		return currentUser;
 	}
 }
