@@ -67,11 +67,11 @@ public class CarDaoImpl implements CarDao {
 
                     Long id = result.getLong("id");
                     String carType = result.getString("carType");
-                    String provider = result.getString("providerComp");
-                    Integer passenger = new Integer(result.getString("passenger"));
+                    String provider = result.getString("provider");
+                    Integer passenger = new Integer(result.getString("passengers"));
                     Double price = new Double(result.getString("price"));
                     String color = result.getString("color");
-                    Boolean isAvailable = new Boolean(result.getString("isAvailable"));
+                    Boolean isAvailable = new Boolean(result.getString("available"));
                     String status = result.getString("status");
                     carlist.add(new Car(id, carType,
                             provider, passenger, price,
