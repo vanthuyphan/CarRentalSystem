@@ -18,10 +18,12 @@ public class CarDaoImpl implements CarDao {
             statement = connection.createStatement();
 
             String sql = "INSERT INTO Car(carType,provider , passengers ,  price ,color , available , status )" +
-                    "VALUES ('%s','%s', %d, %d, %s, %d, %s);";
-            statement.execute(String.format(sql, car.getCarType(), car.getProvider(), car.getPassenger(), car.getPrice(), car.getColor(),
-                    car.getIsAvailable(), car.getStatus())
-            );
+                    "VALUES ('%s','%s', %f, %f, %s, %s, %s);";
+            String formattedString = String.format(sql,
+                    car.getCarType(), car.getProvider(), car.getPassenger().doubleValue(),
+                    car.getPrice().doubleValue(), car.getColor(),
+                    car.getIsAvailable(), car.getStatus());
+            statement.execute(formattedString);
             return true;
         } catch (Exception e) {
             e.printStackTrace();
