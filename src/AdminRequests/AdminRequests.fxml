@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="654.0" xmlns="http://javafx.com/javafx/9.0.4" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AdminRequests.AdminRequests">
+   <children>
+      <StackPane prefHeight="400.0" prefWidth="654.0">
+         <children>
+            <TableView fx:id="table" prefHeight="400.0" prefWidth="661.0">
+              <columns>
+                <TableColumn fx:id="order_ID" prefWidth="64.0" text="Order #" />
+                <TableColumn fx:id="customerName" prefWidth="121.0" text="Customer Name" />
+                  <TableColumn fx:id="car_type" prefWidth="133.0" text="Car ID and Model" />
+                  <TableColumn prefWidth="99.0" text="Pickup date" />
+                  <TableColumn prefWidth="114.0" text="Drop off Time" />
+                  <TableColumn prefWidth="120.0" text="Order Total Value" />
+              </columns>
+            </TableView>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
